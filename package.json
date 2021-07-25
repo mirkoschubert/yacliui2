@@ -1,0 +1,67 @@
+{
+  "name": "yacliui2",
+  "description": "Yet Another CLI UI",
+  "version": "2.0.0",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Mirko Schubert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mirkoschubert/yacliui2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mirkoschubert/yacliui2/issues"
+  },
+  "keywords": [
+    "npm",
+    "esm",
+    "nodejs",
+    "typescript"
+  ],
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "npm-quick-start": "dist/bin/index.js"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "run-p build:*",
+    "build:common": "tsc",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint --fix .",
+    "lint:prettier": "prettier --write .",
+    "test": "jest",
+    "prepare": "simple-git-hooks"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn test && yarn lint"
+  },
+  "devDependencies": {
+    "@jest/types": "^27.0.6",
+    "@types/jest": "^26.0.24",
+    "@types/node": "^16.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "coveralls": "3.1.1",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "jest": "^27.0.6",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.5.1",
+    "ts-jest": "^27.0.3",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  }
+}
