@@ -1,4 +1,3 @@
-
 export enum Alignment { Left = 'left', Center = 'center', Right = 'right' }
 
 export const Align = (str: string, al: Alignment = Alignment.Left, width?: number): (string | undefined) => {
@@ -19,4 +18,20 @@ export const Align = (str: string, al: Alignment = Alignment.Left, width?: numbe
 
 const getWindowWidth = (): number => {
   return (typeof process === 'object' && process.stdout && process.stdout.columns) ? process.stdout.columns : -1
+}
+
+export const Tense = (num: number, topic: string[] = []): string => {
+  return (num > 1) ? topic[1] : topic[0]
+}
+
+export const MergeOptions = (opts: Record<string, unknown>, defaults: Record<string, unknown>): Record<string, unknown> => {
+  let merged: Record<string, unknown> = {}
+  if (opts === undefined) {
+    merged = defaults
+  } else {
+    for (const key in defaults) {
+      merged[key] = (opts[key] !== undefined) ? opts[key] : defaults[key]
+    }
+  }
+  return merged
 }
